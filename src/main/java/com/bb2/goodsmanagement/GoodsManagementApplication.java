@@ -1,4 +1,4 @@
-package com.goodsmanagement;
+package com.bb2.goodsmanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

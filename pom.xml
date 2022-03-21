@@ -8,13 +8,13 @@
 		<version>2.6.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.goods-management</groupId>
+	<groupId>com.bb2</groupId>
 	<artifactId>goods-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>goods-management</name>
-	<description>Goods management API REST</description>
+	<description>Goods Management API REST</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -27,8 +27,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -37,5 +37,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 
 </project>

@@ -1,4 +1,4 @@
-package com.goodsmanagement.domain;
+package com.bb2.goodsmanagement.domain;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 

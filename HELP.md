@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.goods-management' is invalid and this project uses 'com.goodsmanagement' instead.
+* The original package name 'com.bb2.goods-management' is invalid and this project uses 'com.bb2.goodsmanagement' instead.
 
 # Getting Started
 
