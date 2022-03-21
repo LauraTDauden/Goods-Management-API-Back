@@ -8,13 +8,13 @@
 		<version>2.6.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.goods-management</groupId>
+	<groupId>com.bb2</groupId>
 	<artifactId>goods-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>goods-management</name>
-	<description>Goods management API REST</description>
+	<description>Goods Management REST API</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -37,5 +37,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 
 </project>
