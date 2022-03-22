@@ -4,12 +4,14 @@ import com.bb2.goodsmanagement.domain.User;
 
 import java.util.List;
 
-public interface IAdminService {
+public interface IUserService {
 
     void createUser (User user);
 
     void deleteUser (String username);
 
     List <User> getAllUsers();
+
+    User getUserByUserName (String username);
 
 }

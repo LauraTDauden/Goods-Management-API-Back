@@ -5,7 +5,7 @@ import com.bb2.goodsmanagement.dto.ItemDTO;
 
 public class ItemConverter {
 
-    public Item DTO2Pojo (ItemDTO dto){
+    public static Item DTO2Pojo (ItemDTO dto){
         Item item = new Item();
         item.setItem_id(dto.getItem_id());
         item.setItem_code(dto.getItem_code());
@@ -20,7 +20,7 @@ public class ItemConverter {
         return item;
     }
 
-    public ItemDTO Pojo2DTO (Item item){
+    public static ItemDTO Pojo2DTO (Item item){
         ItemDTO dto = new ItemDTO();
         dto.setItem_id(item.getItem_id());
         dto.setItem_code(item.getItem_code());

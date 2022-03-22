@@ -15,6 +15,10 @@ public class ItemService implements IItemService {
     @Autowired
     private ItemRepository itemRepository;
 
+    public ItemRepository getItemRepository() {
+        return itemRepository;
+    }
+
     public List<Item> getAllItems() {
         return itemRepository.findAll();
     }
