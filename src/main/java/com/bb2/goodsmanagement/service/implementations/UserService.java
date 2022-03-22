@@ -1,4 +1,4 @@
-package com.bb2.goodsmanagement.service;
+package com.bb2.goodsmanagement.service.implementations;
 
 import com.bb2.goodsmanagement.domain.User;
 import com.bb2.goodsmanagement.repository.UserRepository;

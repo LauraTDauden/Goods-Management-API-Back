@@ -1,8 +1,6 @@
-package com.bb2.goodsmanagement.service;
+package com.bb2.goodsmanagement.service.implementations;
 
-import com.bb2.goodsmanagement.domain.Item;
 import com.bb2.goodsmanagement.domain.PriceReduction;
-import com.bb2.goodsmanagement.repository.ItemRepository;
 import com.bb2.goodsmanagement.repository.PriceReductionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

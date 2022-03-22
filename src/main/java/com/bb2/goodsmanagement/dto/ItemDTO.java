@@ -1,58 +1,27 @@
-package com.bb2.goodsmanagement.domain;
+package com.bb2.goodsmanagement.dto;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
+import com.bb2.goodsmanagement.domain.ItemStateEnum;
+import com.bb2.goodsmanagement.domain.PriceReduction;
+import com.bb2.goodsmanagement.domain.Supplier;
+import com.bb2.goodsmanagement.domain.User;
 import java.util.Date;
 import java.util.Set;
-import javax.persistence.*;
 
-@Entity
-@Table (name="Item")
-public class Item {
+public class ItemDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long item_id;
-
-    @Column(unique=true, nullable=false)
     private long item_code;
-
-    @Column (nullable = false)
     private String description;
-
-    @Column
     private double price;
-
-    @Enumerated(EnumType.ORDINAL)
     private ItemStateEnum state;
-
-    @ManyToMany
     private Set<Supplier> suppliers;
-
-    @OneToMany
     private Set <PriceReduction> price_reductions;
-
-    @Column
     private Date creation_date;
-
-    @ManyToOne
     private User creator;
 
-    public Item() {
+    public ItemDTO() {
 
-    }
-
-    public Item(long item_id, long item_code, String description, double price, ItemStateEnum state,
-                Set<Supplier> suppliers, Set<PriceReduction> price_reductions, Date creation_date, User creator) {
-        this.item_id = item_id;
-        this.item_code = item_code;
-        this.description = description;
-        this.price = price;
-        this.state = state;
-        this.suppliers = suppliers;
-        this.price_reductions = price_reductions;
-        this.creation_date = creation_date;
-        this.creator = creator;
     }
 
     public long getItem_id() {
