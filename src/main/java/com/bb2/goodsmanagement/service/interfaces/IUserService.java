@@ -8,6 +8,8 @@ public interface IUserService {
 
     void createUser (User user);
 
+    String requestLogin (User user);
+
     void deleteUser (String username);
 
     List <User> getAllUsers();

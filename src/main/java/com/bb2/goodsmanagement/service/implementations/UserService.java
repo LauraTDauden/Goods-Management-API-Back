@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService implements IUserService {
@@ -16,7 +17,24 @@ public class UserService implements IUserService {
 
     @Override
     public void createUser(User user) {
+        user.setUsername(user.getUsername().toLowerCase());
         repository.save(user);
+    }
+
+    @Override
+    public String requestLogin(User user) {
+        User foundUser = getUserByUserName(user.getUsername());
+        if (!Objects.isNull(foundUser)) {
+            if (foundUser.getPassword().equals(user.getPassword())) {
+                return "Authorized";
+            } else {
+                return "Unauthorized";
+            }
+
+        } else {
+            return "No such user";
+        }
+
     }
 
     @Override
@@ -33,7 +51,13 @@ public class UserService implements IUserService {
 
     @Override
     public User getUserByUserName(String username) {
-        username = username.toLowerCase();
-        return repository.findByUsername(username);
+        try {
+            username = username.toLowerCase();
+            return repository.findByUsername(username);
+        } catch (NullPointerException npe) {
+            System.out.println("No such user");
+        }
+        return null;
+
     }
 }
