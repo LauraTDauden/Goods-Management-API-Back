@@ -1,32 +1,17 @@
-package com.bb2.goodsmanagement.domain;
+package com.bb2.goodsmanagement.dto;
+
+import com.bb2.goodsmanagement.domain.RoleEnum;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="User")
-public class User {
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long user_id;
-
-    @Column (unique = true, nullable = false)
     private String username;
-
-    @Column (nullable = false)
     private String password;
-
-    @Enumerated(EnumType.ORDINAL)
     private RoleEnum role;
 
-    public User() {
-    }
-
-    public User(long user_id, String username, String password, RoleEnum role) {
-        this.user_id = user_id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
+    public UserDTO() {
     }
 
     public long getUser_id() {

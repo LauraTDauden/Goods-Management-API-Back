@@ -1,7 +1,7 @@
 package com.bb2.goodsmanagement;
 
 import com.bb2.goodsmanagement.domain.Item;
-import com.bb2.goodsmanagement.service.ItemService;
+import com.bb2.goodsmanagement.service.implementations.ItemService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class ItemServiceUnitTest {
 
     @Test
     public void whenApplicationStarts_thenHibernateCreatesInitialRecords(){
-        List<Item> items = itemService.itemList();
+        List<Item> items = itemService.getAllItems();
         //Assert.assertEquals(items.size(), 2);
     }
 

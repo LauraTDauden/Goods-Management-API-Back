@@ -1,6 +1,5 @@
-package com.bb2.goodsmanagement.service;
+package com.bb2.goodsmanagement.service.implementations;
 
-import com.bb2.goodsmanagement.domain.Item;
 import com.bb2.goodsmanagement.domain.Supplier;
 import com.bb2.goodsmanagement.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
