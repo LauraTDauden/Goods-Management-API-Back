@@ -1,14 +1,12 @@
 package com.bb2.goodsmanagement.controller;
 
-import com.bb2.goodsmanagement.converter.ItemConverter;
 import com.bb2.goodsmanagement.domain.Item;
-import com.bb2.goodsmanagement.dto.ItemDTO;
 import com.bb2.goodsmanagement.service.implementations.ItemService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -19,6 +17,8 @@ public class ItemController {
 
     @Autowired
     private ItemService service;
+
+    private static final Gson gson = new Gson();
 
     @GetMapping ("/items")
     public List<Item> getItems(){
@@ -31,8 +31,9 @@ public class ItemController {
     }
 
     @PostMapping ("/items")
-    public void createItem (@RequestBody Item item) throws URISyntaxException {
-        service.createItem(item);
+    public ResponseEntity<String> createItem (@RequestBody Item item) throws URISyntaxException {
+        String res = service.createItem(item);
+        return ResponseEntity.ok(gson.toJson(res));
 
     }
 

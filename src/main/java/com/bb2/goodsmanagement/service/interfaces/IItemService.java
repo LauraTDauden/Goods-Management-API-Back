@@ -9,7 +9,7 @@ public interface IItemService {
 
     Item getItemById(Long id);
 
-    void createItem(Item item);
+    String createItem(Item item);
 
     void updateItem (long id, Item newItem);
 

@@ -7,6 +7,7 @@ import com.bb2.goodsmanagement.service.interfaces.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -28,8 +29,16 @@ public class ItemService implements IItemService {
     }
 
     @Override
-    public void createItem(Item item) {
-        itemRepository.save(item);
+    public String createItem(Item item) {
+        String message = "";
+        try{
+            item.setCreation_date(new Timestamp(System.currentTimeMillis()));
+            itemRepository.save(item);
+            message = "Item successfully created";
+        } catch (Exception e){
+            message = "Item couldn't be created";
+        }
+            return message;
     }
 
     @Override

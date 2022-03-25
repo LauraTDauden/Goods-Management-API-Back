@@ -17,13 +17,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
+                .csrf().disable();
+        http.headers().frameOptions().disable()
+
                 /*
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/login*").permitAll()
                 .antMatchers("/items*").permitAll()
+                .antMatchers("/users*").permitAll()
+                .antMatchers("/products*").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()*/;
     }
