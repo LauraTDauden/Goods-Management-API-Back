@@ -1,6 +1,10 @@
 package com.bb2.goodsmanagement.service.interfaces;
 
 import com.bb2.goodsmanagement.domain.Item;
+import com.bb2.goodsmanagement.dto.DeactivationReasonDTO;
+import com.bb2.goodsmanagement.dto.ItemDTO;
+import com.bb2.goodsmanagement.dto.PriceReductionDTO;
+import com.bb2.goodsmanagement.dto.SupplierDTO;
 
 import java.util.List;
 
@@ -9,14 +13,18 @@ public interface IItemService {
 
     Item getItemById(Long id);
 
-    String createItem(Item item);
+    String createItem(ItemDTO itemdto);
 
-    void updateItem (long id, Item newItem);
+    String updateItem (long id, ItemDTO newItem);
 
-    void deactivateItem (long id);
+    String deactivateItem (long id, DeactivationReasonDTO reason);
 
     //Only Admin role may do this
-    void deleteItem (long id);
+    String deleteItem (long id);
+
+    String addSupplier (long id, SupplierDTO supplier);
+
+    String priceReduction (long id, PriceReductionDTO priceReduction);
 
 
 }
