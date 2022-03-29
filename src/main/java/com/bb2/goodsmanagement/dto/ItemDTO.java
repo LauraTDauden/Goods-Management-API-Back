@@ -3,7 +3,6 @@ package com.bb2.goodsmanagement.dto;
 import com.bb2.goodsmanagement.domain.ItemStateEnum;
 import com.bb2.goodsmanagement.domain.PriceReduction;
 import com.bb2.goodsmanagement.domain.Supplier;
-import com.bb2.goodsmanagement.domain.User;
 import java.util.Date;
 import java.util.Set;
 
@@ -15,13 +14,21 @@ public class ItemDTO {
     private String description;
     private double price;
     private ItemStateEnum state;
-    private Set<Supplier> suppliers;
-    private Set <PriceReduction> price_reductions;
+    private Set<SupplierDTO> suppliers;
+    private Set <PriceReductionDTO> price_reductions;
     private Date creation_date;
-    private User creator;
+    private UserDTO creator;
 
     public ItemDTO() {
-
+        this.item_id = 0;
+        this.item_code = 0;
+        this.description = null;
+        this.price = 0;
+        this.state = ItemStateEnum.ACTIVE;
+        this.suppliers = null;
+        this.price_reductions = null;
+        this.creation_date = null;
+        this.creator = null;
     }
 
     public long getItem_id() {
@@ -64,19 +71,19 @@ public class ItemDTO {
         this.state = state;
     }
 
-    public Set<Supplier> getSuppliers() {
+    public Set<SupplierDTO> getSuppliers() {
         return suppliers;
     }
 
-    public void setSuppliers(Set<Supplier> suppliers) {
+    public void setSuppliers(Set<SupplierDTO> suppliers) {
         this.suppliers = suppliers;
     }
 
-    public Set<PriceReduction> getPrice_reductions() {
+    public Set<PriceReductionDTO> getPrice_reductions() {
         return price_reductions;
     }
 
-    public void setPrice_reductions(Set<PriceReduction> price_reductions) {
+    public void setPrice_reductions(Set<PriceReductionDTO> price_reductions) {
         this.price_reductions = price_reductions;
     }
 
@@ -88,11 +95,11 @@ public class ItemDTO {
         this.creation_date = creation_date;
     }
 
-    public User getCreator() {
+    public UserDTO getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(UserDTO creator) {
         this.creator = creator;
     }
 }

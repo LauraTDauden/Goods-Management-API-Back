@@ -1,5 +1,6 @@
 package com.bb2.goodsmanagement.dto;
 
+import com.bb2.goodsmanagement.domain.ItemStateEnum;
 import com.bb2.goodsmanagement.domain.RoleEnum;
 
 import javax.persistence.*;
@@ -12,6 +13,10 @@ public class UserDTO {
     private RoleEnum role;
 
     public UserDTO() {
+        this.user_id = 0;
+        this.username = "";
+        this.password = "";
+        this.role = RoleEnum.MEMBER;
     }
 
     public long getUser_id() {
