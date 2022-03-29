@@ -5,7 +5,7 @@ import com.bb2.goodsmanagement.dto.UserDTO;
 
 public class UserConverter {
 
-    public User DTO2pojo (UserDTO dto){
+    public static User DTO2pojo (UserDTO dto){
         User user = new User();
         user.setUser_id(dto.getUser_id());
         user.setUsername(dto.getUsername());
@@ -15,7 +15,7 @@ public class UserConverter {
         return user;
     }
 
-    public UserDTO Pojo2DTO (User user){
+    public static UserDTO Pojo2DTO (User user){
         UserDTO dto = new UserDTO();
         dto.setUser_id(user.getUser_id());
         dto.setUsername(user.getUsername());
