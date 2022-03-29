@@ -27,10 +27,10 @@ public class Item {
     private ItemStateEnum state;
 
     @ManyToMany
-    private Set<Supplier> suppliers;
+    private Set<Supplier> suppliers = null;
 
     @OneToMany
-    private Set <PriceReduction> price_reductions;
+    private Set <PriceReduction> price_reductions = null;
 
     @Column
     private Date creation_date;
@@ -39,6 +39,16 @@ public class Item {
     private User creator;
 
     public Item() {
+
+        this.item_id = 0;
+        this.item_code = 0;
+        this.description = null;
+        this.price = 0;
+        this.state = ItemStateEnum.ACTIVE;
+        this.suppliers = null;
+        this.price_reductions = null;
+        this.creation_date = null;
+        this.creator = null;
 
     }
 

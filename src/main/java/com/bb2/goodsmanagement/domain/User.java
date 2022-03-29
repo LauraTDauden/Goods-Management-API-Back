@@ -20,6 +20,10 @@ public class User {
     private RoleEnum role;
 
     public User() {
+        this.user_id = 0;
+        this.username = "";
+        this.password = "";
+        this.role = RoleEnum.MEMBER;
     }
 
     public User(long user_id, String username, String password, RoleEnum role) {
