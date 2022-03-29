@@ -1,9 +1,11 @@
-INSERT INTO supplier (name, country) VALUES ('Test supplier', 'Spain');
-INSERT INTO supplier (name, country) VALUES ('Supplier 2', 'Italy');
+INSERT INTO supplier (name, country) VALUES ('Supplierz', 'Spain');
+INSERT INTO supplier (name, country) VALUES ('ImportCO', 'Italy');
+INSERT INTO supplier (name, country) VALUES ('Produk-t', 'UK');
 
 INSERT INTO USER (USERNAME, PASSWORD, ROLE) VALUES ('admin', 'admin', 1);
 INSERT INTO USER (USERNAME, PASSWORD, ROLE) VALUES ('user', 'user', 0);
-INSERT INTO USER (USERNAME, PASSWORD, ROLE) VALUES ('user2', 'user', 0);
+INSERT INTO USER (USERNAME, PASSWORD, ROLE) VALUES ('laura', 'laura', 0);
+INSERT INTO USER (USERNAME, PASSWORD, ROLE) VALUES ('1', '1', 0);
 
 INSERT INTO ITEM (ITEM_CODE, DESCRIPTION, PRICE, STATE, CREATOR_USER_ID, CREATION_DATE) VALUES (1, 'Blue table', '45.90', 0, 2, '2020-02-01 20:47:52.69' );
 INSERT INTO ITEM (ITEM_CODE, DESCRIPTION, PRICE, STATE, CREATOR_USER_ID, CREATION_DATE) VALUES (2, 'Green sofa', '458.90', 0, 3, '2019-11-22 20:47:52.69' );
