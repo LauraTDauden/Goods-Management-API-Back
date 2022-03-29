@@ -15,6 +15,7 @@ public class UserService implements IUserService {
     @Autowired
     private UserRepository repository;
 
+
     @Override
     public void createUser(User user) {
         user.setUsername(user.getUsername().toLowerCase());
@@ -34,7 +35,6 @@ public class UserService implements IUserService {
         } else {
             return "No such user";
         }
-
     }
 
     @Override
@@ -52,7 +52,7 @@ public class UserService implements IUserService {
     @Override
     public User getUserByUserName(String username) {
         try {
-            username = username.toLowerCase();
+            username = username.toLowerCase().trim();
             return repository.findByUsername(username);
         } catch (NullPointerException npe) {
             System.out.println("No such user");
