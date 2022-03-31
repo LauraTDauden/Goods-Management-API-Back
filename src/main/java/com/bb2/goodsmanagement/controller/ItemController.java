@@ -1,6 +1,8 @@
 package com.bb2.goodsmanagement.controller;
 
 import com.bb2.goodsmanagement.domain.Item;
+import com.bb2.goodsmanagement.domain.PriceReduction;
+import com.bb2.goodsmanagement.domain.Supplier;
 import com.bb2.goodsmanagement.dto.DeactivationReasonDTO;
 import com.bb2.goodsmanagement.dto.ItemDTO;
 import com.bb2.goodsmanagement.service.implementations.ItemService;
@@ -32,6 +34,16 @@ public class ItemController {
         return service.getItemById(id);
     }
 
+    @GetMapping ("/items/{id}/suppliers")
+    public List<Supplier> getAllItemSuppliers (@PathVariable("id")long id){
+        return service.getAllItemSuppliers(id);
+    }
+
+    @GetMapping ("/items/{id}/prices")
+    public List<PriceReduction> getAllItemPriceReductions (@PathVariable("id")long id){
+        return service.getAllItemPriceReductions(id);
+    }
+
     @CrossOrigin
     @PostMapping ("/items")
     public ResponseEntity<String> createItem (@RequestBody ItemDTO item) throws URISyntaxException {
@@ -46,19 +58,27 @@ public class ItemController {
         return ResponseEntity.ok(gson.toJson(res));
     }
 
+    /*
+    @CrossOrigin
+    @PutMapping ("/items/{id}")
+    public ResponseEntity<String> addSupplier (@PathVariable("id") long id, @RequestBody SupplierDTO supplier) throws URISyntaxException {
+        String res = service.addSupplier(id, supplier);
+        return ResponseEntity.ok(gson.toJson(res));
+    }
+    */
+
     @CrossOrigin
     @PutMapping ("/items/{id}/deactivate")
-    public ResponseEntity<String> deactivateItem (@PathVariable("id") long id, @RequestBody DeactivationReasonDTO reason) throws URISyntaxException {
-        String res = service.deactivateItem(id, reason);
+    public ResponseEntity<String> deactivateItem (@PathVariable("id") long id, @RequestBody DeactivationReasonDTO reason,
+                                                  @RequestParam (name = "username") String username) throws URISyntaxException {
+        String res = service.deactivateItem(id, reason, username);
         return ResponseEntity.ok(gson.toJson(res));
     }
 
     @CrossOrigin
-    @DeleteMapping ("/items/{id}/delete")
-    public ResponseEntity<String> deleteItem (@RequestBody long id) throws URISyntaxException {
+    @DeleteMapping ("/items/{id}")
+    public ResponseEntity<String> deleteItem (@PathVariable ("id") long id)  throws URISyntaxException {
         String res = service.deleteItem(id);
         return ResponseEntity.ok(gson.toJson(res));
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.bb2.goodsmanagement.service.interfaces;
 
+import com.bb2.goodsmanagement.domain.Item;
 import com.bb2.goodsmanagement.domain.Supplier;
 import com.bb2.goodsmanagement.dto.SupplierDTO;
 
@@ -13,5 +14,6 @@ public interface ISupplierService {
     Supplier getSupplierById (Long id);
 
     String createSupplier (SupplierDTO supplierDTO);
+
 
 }

@@ -2,20 +2,23 @@ package com.bb2.goodsmanagement.service.implementations;
 
 import com.bb2.goodsmanagement.converter.DeactivationReasonConverter;
 import com.bb2.goodsmanagement.converter.ItemConverter;
+import com.bb2.goodsmanagement.converter.SupplierConverter;
 import com.bb2.goodsmanagement.converter.UserConverter;
 import com.bb2.goodsmanagement.domain.*;
 import com.bb2.goodsmanagement.dto.DeactivationReasonDTO;
 import com.bb2.goodsmanagement.dto.ItemDTO;
 import com.bb2.goodsmanagement.dto.PriceReductionDTO;
 import com.bb2.goodsmanagement.dto.SupplierDTO;
-import com.bb2.goodsmanagement.repository.DeactivationReasonRepository;
-import com.bb2.goodsmanagement.repository.ItemRepository;
+import com.bb2.goodsmanagement.repository.*;
 import com.bb2.goodsmanagement.service.interfaces.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ItemService implements IItemService {
@@ -27,7 +30,19 @@ public class ItemService implements IItemService {
     private UserService userService;
 
     @Autowired
+    private SupplierService supplierService;
+
+    @Autowired
+    private PriceReductionService priceReductionService;
+
+    @Autowired
     private DeactivationReasonRepository reasonRepository;
+
+    @Autowired
+    private SupplierRepository supplierRepository;
+
+    @Autowired
+    private PriceReductionRepository priceReductionRepository;
 
     public ItemRepository getItemRepository() {
         return itemRepository;
@@ -68,29 +83,67 @@ public class ItemService implements IItemService {
         try{
             Item item = itemRepository.findById(id).get();
             Item dto = ItemConverter.DTO2Pojo(newItem);
+
+
+            Set<Supplier> suppliers = item.getSuppliers();
+            for(Supplier sup: dto.getSuppliers()){
+                Supplier supplier;
+                if (sup.getSupplier_id() != 0){
+                    supplier = new Supplier();
+                    supplier = supplierService.getSupplierById(sup.getSupplier_id());
+                } else {
+                    supplier = new Supplier();
+                    supplier.setName(sup.getName());
+                    supplier.setCountry(sup.getCountry());
+                    supplierRepository.save(supplier);
+                }
+                Supplier newSupplier = supplierService.getSupplierByName(supplier.getName());
+                suppliers.add(newSupplier);
+            }
             item.setDescription(dto.getDescription());
             item.setPrice(dto.getPrice());
-            item.setSuppliers(dto.getSuppliers());
-            item.setPrice_reductions(dto.getPrice_reductions());
-            item.setCreation_date(dto.getCreation_date());
+            //item.setPrice_reductions(dto.getPrice_reductions());
+
+            Set<PriceReduction> prices = item.getPrice_reductions();
+            for(PriceReduction priceR: dto.getPrice_reductions()){
+                PriceReduction priceReduction;
+                if (priceR.getPriceReduction_id() != 0){
+                    priceReduction = new PriceReduction();
+                    priceReduction = priceReductionService.getPriceReductionById(priceR.getPriceReduction_id());
+                } else {
+                    priceReduction = new PriceReduction();
+                    priceReduction.setReduced_price(priceR.getReduced_price());
+                    priceReduction.setStart_date(priceR.getStart_date());
+                    priceReduction.setEnd_date(priceR.getEnd_date());
+                    priceReductionRepository.save(priceReduction);
+                }
+                prices.add(priceReduction);
+            }
+
+
+            //item.setCreation_date(dto.getCreation_date());
             itemRepository.save(item);
-            message = "Successfully updated.";
+            //message = "Successfully updated.";
+            message ="1";
         } catch (Exception e) {
-            message = "Item could not be updated.";
+            //message = "Item could not be updated.";
+            message = "0";
         }
             return message;
     }
 
     @Override
-    public String deactivateItem(long id, DeactivationReasonDTO reasonDTO) {
+    public String deactivateItem(long id, DeactivationReasonDTO reasonDTO, String username) {
         String message = "";
         try{
             Item item = itemRepository.findById(id).get();
+            User user = userService.getUserByUserName(username);
             item.setState(ItemStateEnum.DISCONTINUED);
             DeactivationReason deactivationReason = DeactivationReasonConverter.DTO2Pojo(reasonDTO);
             deactivationReason.setDeactivatedItem(item);
-            itemRepository.save(item);
+            deactivationReason.setUser(user);
             reasonRepository.save(deactivationReason);
+            itemRepository.save(item);
             message = "Item deactivated.";
         } catch (Exception e){
             message = "Item couldn't be deactivated.";
@@ -115,6 +168,12 @@ public class ItemService implements IItemService {
     public String addSupplier(long id, SupplierDTO supplier) {
         String message = "";
                 try{
+                    Item item = itemRepository.findById(id).get();
+                    if(item.getSuppliers() == null){
+                        item.setSuppliers(new HashSet<>());
+                    }
+                    item.addSupplier(SupplierConverter.DTO2Pojo(supplier));
+                    itemRepository.save(item);
                     message = "Supplier added.";
                 }catch (Exception e){
                     message = "Supplier could not be added to item.";
@@ -131,5 +190,20 @@ public class ItemService implements IItemService {
             message = "Price reduction could not be added to item.";
         }
         return message;
+    }
+
+    @Override
+    public List<Supplier> getAllItemSuppliers(long id) {
+        Item item = getItemById(id);
+        List<Supplier> suppliers = new ArrayList<>(item.getSuppliers());
+        return suppliers;
+    }
+
+    @Override
+    public List<PriceReduction> getAllItemPriceReductions(long id) {
+        Item item = getItemById(id);
+        List<PriceReduction> prices = new ArrayList<>(item.getPrice_reductions());
+        return prices;
+
     }
 }

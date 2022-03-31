@@ -3,6 +3,7 @@ package com.bb2.goodsmanagement.domain;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -27,10 +28,10 @@ public class Item {
     private ItemStateEnum state;
 
     @ManyToMany
-    private Set<Supplier> suppliers = null;
+    private Set<Supplier> suppliers;
 
     @OneToMany
-    private Set <PriceReduction> price_reductions = null;
+    private Set <PriceReduction> price_reductions;
 
     @Column
     private Date creation_date;
@@ -39,17 +40,15 @@ public class Item {
     private User creator;
 
     public Item() {
-
         this.item_id = 0;
         this.item_code = 0;
         this.description = null;
         this.price = 0;
         this.state = ItemStateEnum.ACTIVE;
-        this.suppliers = null;
-        this.price_reductions = null;
+        this.suppliers = new HashSet<>();
+        this.price_reductions = new HashSet<>();
         this.creation_date = null;
         this.creator = null;
-
     }
 
     public Item(long item_id, long item_code, String description, double price, ItemStateEnum state,
@@ -110,15 +109,23 @@ public class Item {
     }
 
     public void setSuppliers(Set<Supplier> suppliers) {
-        this.suppliers = suppliers;
+       this.suppliers = suppliers;
     }
 
     public Set<PriceReduction> getPrice_reductions() {
         return price_reductions;
     }
 
+    public void addSupplier (Supplier supplier){
+        this.suppliers.add(supplier);
+    }
+
     public void setPrice_reductions(Set<PriceReduction> price_reductions) {
         this.price_reductions = price_reductions;
+    }
+
+    public void addPriceReduction (PriceReduction priceReduction){
+        this.price_reductions.add(priceReduction);
     }
 
     public Date getCreation_date() {

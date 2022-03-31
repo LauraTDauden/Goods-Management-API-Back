@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IPriceReductionService {
     public List<PriceReduction> priceReductionList ();
+
+    PriceReduction getPriceReductionById (Long id);
 }

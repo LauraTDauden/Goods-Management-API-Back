@@ -25,15 +25,15 @@ public class ItemConverter {
         item.setCreator(UserConverter.DTO2pojo(userdto));
 
         if(dto.getSuppliers() != null){
+            item.setSuppliers(new HashSet<>());
             for(SupplierDTO supplier: dto.getSuppliers()){
-                item.setSuppliers(new HashSet<>());
                 item.getSuppliers().add(SupplierConverter.DTO2Pojo(supplier));
             }
         }
 
         if(dto.getPrice_reductions() != null){
+            item.setPrice_reductions(new HashSet<>());
             for(PriceReductionDTO price: dto.getPrice_reductions()){
-                item.setPrice_reductions(new HashSet<>());
                 item.getPrice_reductions().add(PriceReductionConverter.DTO2Pojo(price));
             }
         }

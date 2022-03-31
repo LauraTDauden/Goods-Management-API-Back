@@ -9,8 +9,8 @@ public class DeactivationReasonConverter {
         DeactivationReason reason = new DeactivationReason();
         reason.setReason_id(dto.getReason_id());
         reason.setReason(dto.getReason());
-        reason.setDeactivatedItem(ItemConverter.DTO2Pojo(dto.getDeactivatedItem()));
-        reason.setUser(UserConverter.DTO2pojo(dto.getUser()));
+        //reason.setDeactivatedItem(ItemConverter.DTO2Pojo(dto.getDeactivatedItem()));
+        //reason.setUser(UserConverter.DTO2pojo(dto.getUser()));
 
         return reason;
     }

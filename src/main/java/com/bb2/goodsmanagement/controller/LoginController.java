@@ -2,6 +2,7 @@ package com.bb2.goodsmanagement.controller;
 
 import com.bb2.goodsmanagement.domain.RoleEnum;
 import com.bb2.goodsmanagement.domain.User;
+import com.bb2.goodsmanagement.dto.UserDTO;
 import com.bb2.goodsmanagement.service.implementations.UserService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,10 @@ public class LoginController {
 
     private static final Gson gson = new Gson();
 
-
     @GetMapping("/login")
-    public User getUserbyUsername(String username){
+    public User getUserbyUsername(@RequestParam (name = "username") String username){
         return service.getUserByUserName(username);
     }
-
 
     @GetMapping("/users")
     public List<User> getAllUsers(){
@@ -35,16 +34,25 @@ public class LoginController {
 
     @CrossOrigin
     @PostMapping("/users")
-    public void createUser (@RequestBody User user) throws URISyntaxException {
+    public ResponseEntity<String> createUser (@RequestBody UserDTO user) throws URISyntaxException {
         if(user.getRole() == null)
             user.setRole(RoleEnum.MEMBER);
-        service.createUser(user);
+        String res = service.createUser(user);
+        return ResponseEntity.ok(gson.toJson(res));
     }
 
     @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<String> requestLogin (@RequestBody User user) throws URISyntaxException {
         String res = service.requestLogin(user);
+        return ResponseEntity.ok(gson.toJson(res));
+    }
+
+    @CrossOrigin
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<String> deleteUser (@PathVariable ("id") long id) throws URISyntaxException {
+        User user = service.getUserById(id);
+        String res = service.deleteUser(user);
         return ResponseEntity.ok(gson.toJson(res));
     }
 

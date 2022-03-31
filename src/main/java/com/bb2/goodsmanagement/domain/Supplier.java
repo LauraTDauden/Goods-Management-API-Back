@@ -17,6 +17,9 @@ public class Supplier {
     private String country;
 
     public Supplier() {
+        this.supplier_id = 0;
+        name = "";
+        country = "";
     }
 
     public Supplier(long supplier_id, String name, String country) {
