@@ -1,7 +1,10 @@
 # Goods Management API
 
 This project focuses on the development of a simple API for the management of a goods in a company.
-The back-end of the application is developed using the Java Spring framework and the front-end is developed in ReactJS.
+The back-end of the application is developed using Java 8 and the Spring framework, while the front-end is developed in ReactJS.
+
+- **Back-end:** https://github.com/LauraTDauden/goods-management
+- **Front-end:** https://github.com/LauraTDauden/goods-management-front
 
 ## Business case
     • This company is focused in buying and selling products. 
@@ -66,4 +69,3 @@ This class is composed of an id (long), a deactivation reason (String), the item
         1. Class diagram
         2. User manual
 
-    
