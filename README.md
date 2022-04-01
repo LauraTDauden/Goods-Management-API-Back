@@ -1,6 +1,6 @@
 # Goods Management API
 
-This project focuses on the development of a simple API for the management of a goods in a company.
+This project focuses on the development of a simple API for the management of a goods company.
 The back-end of the application is developed using Java 8 and the Spring framework, while the front-end is developed in ReactJS. The database used is H2.
 
 - **Back-end:** https://github.com/LauraTDauden/goods-management
