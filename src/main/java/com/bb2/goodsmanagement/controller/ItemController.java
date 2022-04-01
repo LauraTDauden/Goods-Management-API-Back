@@ -58,15 +58,6 @@ public class ItemController {
         return ResponseEntity.ok(gson.toJson(res));
     }
 
-    /*
-    @CrossOrigin
-    @PutMapping ("/items/{id}")
-    public ResponseEntity<String> addSupplier (@PathVariable("id") long id, @RequestBody SupplierDTO supplier) throws URISyntaxException {
-        String res = service.addSupplier(id, supplier);
-        return ResponseEntity.ok(gson.toJson(res));
-    }
-    */
-
     @CrossOrigin
     @PutMapping ("/items/{id}/deactivate")
     public ResponseEntity<String> deactivateItem (@PathVariable("id") long id, @RequestBody DeactivationReasonDTO reason,

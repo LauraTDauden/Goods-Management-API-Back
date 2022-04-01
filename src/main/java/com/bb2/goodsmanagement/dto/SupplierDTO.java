@@ -1,6 +1,5 @@
 package com.bb2.goodsmanagement.dto;
 
-
 public class SupplierDTO {
 
     private long supplier_id;

@@ -3,7 +3,6 @@ package com.bb2.goodsmanagement.service.implementations;
 import com.bb2.goodsmanagement.converter.DeactivationReasonConverter;
 import com.bb2.goodsmanagement.converter.ItemConverter;
 import com.bb2.goodsmanagement.converter.SupplierConverter;
-import com.bb2.goodsmanagement.converter.UserConverter;
 import com.bb2.goodsmanagement.domain.*;
 import com.bb2.goodsmanagement.dto.DeactivationReasonDTO;
 import com.bb2.goodsmanagement.dto.ItemDTO;
@@ -102,7 +101,6 @@ public class ItemService implements IItemService {
             }
             item.setDescription(dto.getDescription());
             item.setPrice(dto.getPrice());
-            //item.setPrice_reductions(dto.getPrice_reductions());
 
             Set<PriceReduction> prices = item.getPrice_reductions();
             for(PriceReduction priceR: dto.getPrice_reductions()){
@@ -119,9 +117,6 @@ public class ItemService implements IItemService {
                 }
                 prices.add(priceReduction);
             }
-
-
-            //item.setCreation_date(dto.getCreation_date());
             itemRepository.save(item);
             //message = "Successfully updated.";
             message ="1";

@@ -21,7 +21,6 @@ public interface IItemService {
 
     String deactivateItem (long id, DeactivationReasonDTO reason, String username);
 
-    //Only Admin role may do this
     String deleteItem (long id);
 
     String addSupplier (long id, SupplierDTO supplier);
@@ -31,6 +30,5 @@ public interface IItemService {
     List <Supplier> getAllItemSuppliers (long id);
 
     List <PriceReduction> getAllItemPriceReductions (long id);
-
 
 }

@@ -7,7 +7,6 @@ import com.bb2.goodsmanagement.repository.UserRepository;
 import com.bb2.goodsmanagement.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -72,7 +71,6 @@ public class UserService implements IUserService {
             System.out.println("No such user");
         }
         return null;
-
     }
 
     @Override

@@ -1,10 +1,5 @@
 package com.bb2.goodsmanagement.dto;
 
-import com.bb2.goodsmanagement.domain.Item;
-import com.bb2.goodsmanagement.domain.User;
-
-import javax.persistence.Column;
-
 public class DeactivationReasonDTO {
 
     private long reason_id;

@@ -1,9 +1,6 @@
 package com.bb2.goodsmanagement.dto;
 
-import com.bb2.goodsmanagement.domain.ItemStateEnum;
 import com.bb2.goodsmanagement.domain.RoleEnum;
-
-import javax.persistence.*;
 
 public class UserDTO {
 

@@ -1,13 +1,10 @@
 package com.bb2.goodsmanagement.dto;
 
 import com.bb2.goodsmanagement.domain.ItemStateEnum;
-import com.bb2.goodsmanagement.domain.PriceReduction;
-import com.bb2.goodsmanagement.domain.Supplier;
 import java.util.Date;
 import java.util.Set;
 
 public class ItemDTO {
-
 
     private long item_id;
     private long item_code;

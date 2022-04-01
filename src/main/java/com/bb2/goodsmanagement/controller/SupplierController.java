@@ -23,7 +23,6 @@ public class SupplierController {
 
     @GetMapping ("/suppliers")
     public List<Supplier> getSuppliers(){
-
         return service.getAllSuppliers();
     }
 }

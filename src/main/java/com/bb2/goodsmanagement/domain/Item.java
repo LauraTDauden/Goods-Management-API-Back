@@ -1,5 +1,7 @@
 package com.bb2.goodsmanagement.domain;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.util.Date;

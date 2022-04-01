@@ -9,7 +9,5 @@ public class WebMainController {
     public String index(){
         return "index";
     }
-
-
 }
 */

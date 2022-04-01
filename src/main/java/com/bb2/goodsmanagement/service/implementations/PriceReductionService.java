@@ -22,5 +22,4 @@ public class PriceReductionService implements IPriceReductionService {
     public PriceReduction getPriceReductionById(Long id) {
         return priceReductionRepository.getById(id);
     }
-
 }

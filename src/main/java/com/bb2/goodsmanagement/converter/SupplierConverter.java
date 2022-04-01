@@ -1,6 +1,4 @@
 package com.bb2.goodsmanagement.converter;
-
-
 import com.bb2.goodsmanagement.domain.Supplier;
 import com.bb2.goodsmanagement.dto.SupplierDTO;
 

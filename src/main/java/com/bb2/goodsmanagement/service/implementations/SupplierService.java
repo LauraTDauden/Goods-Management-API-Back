@@ -42,6 +42,5 @@ public class SupplierService implements ISupplierService {
             message = "Supplier could not be created.";
         }
         return message;
-
     }
 }
